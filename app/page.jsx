@@ -1,3 +1,5 @@
+"use client"; // <-- WAJIB: Agar komponen ini berjalan di browser (Client Component)
+
 // Tidak perlu mengimpor 'React' di Next.js
 import { useState, useEffect } from 'react';
 import { RefreshCcw, Star, TrendingUp } from 'lucide-react'; 
@@ -14,9 +16,8 @@ const MOCK_RANKING_DATA = [
 
 /**
  * Komponen utama aplikasi leaderboard.
- * Di Next.js App Router, nama fungsi ini akan menjadi halaman default.
  */
-const App = () => {
+function App() {
   const [ranking, setRanking] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -137,6 +138,6 @@ const App = () => {
       </div>
     </div>
   );
-}; // <-- Kurung kurawal penutup fungsi App sudah diperbaiki di sini
+}
 
-export default App; // Ekspor default
+export default App;
