@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { RefreshCcw, Star, TrendingUp } from 'lucide-react'; // Menggunakan ikon Lucide untuk antarmuka yang keren
+// Tidak perlu mengimpor 'React' di Next.js
+import { useState, useEffect } from 'react';
+import { RefreshCcw, Star, TrendingUp } from 'lucide-react'; 
 
 // Data simulasi untuk leaderboard
 const MOCK_RANKING_DATA = [
@@ -13,15 +14,15 @@ const MOCK_RANKING_DATA = [
 
 /**
  * Komponen utama aplikasi leaderboard.
- * Menampilkan daftar peringkat yang responsif.
+ * Di Next.js App Router, nama fungsi ini akan menjadi halaman default.
  */
 const App = () => {
   const [ranking, setRanking] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Simulasi pengambilan data dari API (di dunia nyata, ini akan menjadi panggilan 'fetch')
+  // Simulasi pengambilan data
   useEffect(() => {
-    // Simulasi loading selama 1.5 detik
+    // Fungsi ini hanya berjalan sekali saat komponen dimuat
     setTimeout(() => {
       setRanking(MOCK_RANKING_DATA);
       setIsLoading(false);
@@ -33,13 +34,13 @@ const App = () => {
     setIsLoading(true);
     setRanking([]);
     setTimeout(() => {
-      // Di sini Anda akan memanggil fungsi untuk mengambil data Farcaster yang sebenarnya
+      // Perbarui skor secara acak
       const newRanking = MOCK_RANKING_DATA.map(item => ({
         ...item,
-        score: item.score + Math.floor(Math.random() * 500) // Skor acak baru
+        score: item.score + Math.floor(Math.random() * 500) 
       })).sort((a, b) => b.score - a.score).map((item, index) => ({
         ...item,
-        rank: index + 1 // Perbarui peringkat
+        rank: index + 1 
       }));
       setRanking(newRanking);
       setIsLoading(false);
@@ -47,7 +48,7 @@ const App = () => {
   };
 
   /**
-   * Helper untuk mendapatkan warna berdasarkan perubahan peringkat
+   * Helper untuk mendapatkan style berdasarkan perubahan peringkat
    */
   const getChangeStyle = (change) => {
     const numChange = parseInt(change);
@@ -136,6 +137,6 @@ const App = () => {
       </div>
     </div>
   );
-};
+}; // <-- Kurung kurawal penutup fungsi App sudah diperbaiki di sini
 
-export default App;
+export default App; // Ekspor default
